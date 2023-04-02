@@ -7,7 +7,8 @@ function updateMenuItem() {
 }
 
 async function getDinnerMenus() {
-  const res = await fetch(`${process.env.BASE_URL}/api/getDinnerMenus`);
+  // const res = await fetch(`${process.env.BASE_URL}/api/getDinnerMenus`);
+  const res = await fetch(`/api/getDinnerMenus`);
 
   if (!res.ok) {
     console.log(res);
