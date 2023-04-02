@@ -9,9 +9,9 @@ function activateAdmin() {
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center bg-slate-700 flex-row justify-around py-12 px-4">
+    <nav className="flex items-center bg-slate-700 flex-row justify-around py-12 max-sm:py-6 px-4">
       <Link href={"/"}>
-        <h1 className="text-6xl font-bold">Lindenhof Patz</h1>
+        <h1 className="text-6xl font-bold max-sm:text-4xl">Lindenhof Patz</h1>
       </Link>
       <div className="flex ">
         <a href={process.env.DATABASE_DASHBOARD} target="_blank">
@@ -19,8 +19,8 @@ const Navbar = () => {
             className="z-0"
             src="/chef_pig.png"
             alt="Picture of the author"
-            width={64}
-            height={64}
+            width={48}
+            height={48}
           />
           {/* <button
             className="absolute ml-2 text-stone-100 cursor-pointer z-10"

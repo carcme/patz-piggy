@@ -28,8 +28,8 @@ const Menu = (props: { description: string; price: string; id: number }) => {
   const showEdit = false;
 
   return (
-    <div className="grid grid-flow-col items-center gap-4 px-4 py-2 tracking-widest hover:font-medium">
-      <p className="flex justify-start w-[600px] max-md:w-[300px]">
+    <div className="grid grid-flow-col items-center gap-4 py-2 tracking-widest max-sm:text-xs  hover:font-medium">
+      <p className="flex justify-start w-[600px] max-md:w-[300px] max-sm:w-[200px] px-4">
         {props.description}
       </p>
       <p className="text-end">{props.price} </p>

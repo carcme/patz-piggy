@@ -23,14 +23,16 @@ export default async function Home() {
     price: string;
   }[] = await getDinnerMenus();
 
-  const showEdit = true;
-
   return (
     <main className="bg-slate-600 text-stone-300">
       <Navbar />
       <div className="flex flex-col items-center">
-        <h2 className="text-2xl pt-16">Wochenend-Spezialmenü</h2>
-        <h3 className=" py-4">Wochenende zwischen 12:00 und 15:00 Uhr</h3>
+        <h2 className="text-2xl pt-16 px-2 max-sm:text-lg">
+          Wochenend-Spezialmenü
+        </h2>
+        <h3 className="py-4 px-2 text-lg max-sm:text-sm">
+          Wochenende zwischen 12:00 und 15:00 Uhr
+        </h3>
         <div className=" justify-center">
           {/* The Specials menu (1) */}
           {menus.map((item) => {
@@ -47,8 +49,12 @@ export default async function Home() {
             );
           })}
         </div>
-        <h2 className="text-2xl pt-16">Das „Immer“ verfügbare Menü</h2>
-        <h3 className="py-4">Bis zum Küchenschluss</h3>
+        <h2 className="text-2xl pt-16 px-2 max-sm:text-lg">
+          Das „Immer“ verfügbare Menü
+        </h2>
+        <h3 className="py-4 px-2 text-lg max-sm:text-sm">
+          Bis zum Küchenschluss
+        </h3>
 
         <div className=" ">
           {/* always available menu  (0) */}
@@ -66,7 +72,9 @@ export default async function Home() {
             );
           })}
         </div>
-        <h2 className="text-2xl pt-16">Das Spezialmenü der nächsten Woche</h2>
+        <h2 className="text-2xl pt-16 px-2 max-sm:text-lg py-4">
+          Das Spezialmenü der nächsten Woche
+        </h2>
         <div className="pb-14 ">
           {/* next week menu  (2) */}
           {menus.map((item) => {
