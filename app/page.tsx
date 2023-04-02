@@ -1,91 +1,101 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import React from "react";
+import Menu from "./components/menu";
+import Navbar from "./components/Navbar";
 
-const inter = Inter({ subsets: ['latin'] })
+function updateMenuItem() {
+  console.log("updateMenuItem");
+}
 
-export default function Home() {
+async function getDinnerMenus() {
+  const res = await fetch(`${process.env.BASE_URL}/api/getDinnerMenus`);
+
+  if (!res.ok) {
+    console.log(res);
+  }
+  return res.json();
+}
+
+export default async function Home() {
+  const menus: {
+    id: number;
+    type: number;
+    description: string;
+    price: string;
+  }[] = await getDinnerMenus();
+
+  const showEdit = true;
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="bg-slate-600 text-stone-300">
+      <Navbar />
+      <div className="flex flex-col items-center">
+        <h2 className="text-2xl pt-16">Wochenend-Spezialmenü</h2>
+        <h3 className=" py-4">Wochenende zwischen 12:00 und 15:00 Uhr</h3>
+        <div className=" justify-center">
+          {/* The Specials menu (1) */}
+          {menus.map((item) => {
+            return (
+              <div key={item.id}>
+                {item.type === 1 && (
+                  <Menu
+                    description={item.description}
+                    price={item.price}
+                    id={item.id}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <h2 className="text-2xl pt-16">Das „Immer“ verfügbare Menü</h2>
+        <h3 className="py-4">Bis zum Küchenschluss</h3>
+
+        <div className=" ">
+          {/* always available menu  (0) */}
+          {menus.map((item) => {
+            return (
+              <div key={item.id}>
+                {item.type === 0 && (
+                  <Menu
+                    description={item.description}
+                    price={item.price}
+                    id={item.id}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <h2 className="text-2xl pt-16">Das Spezialmenü der nächsten Woche</h2>
+        <div className="pb-14 ">
+          {/* next week menu  (2) */}
+          {menus.map((item) => {
+            return (
+              <div key={item.id}>
+                {item.type === 2 && (
+                  <Menu
+                    description={item.description}
+                    price={item.price}
+                    id={item.id}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+      <footer>
+        <div className="mx-4 pb-4 flex justify-center md:mb-0 ">
+          <iframe
+            width="100%"
+            height={320}
+            className="rounded"
+            title="location map"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6912.749519168954!2d13.65194608249894!3d52.22474487266107!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8166bd79f1dd1%3A0x348cb559539751e6!2sLindenhof%20P%C3%A4tz!5e0!3m2!1sen!2sde!4v1676908879463!5m2!1sen!2sde"
+            loading="lazy"
+          ></iframe>
         </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </footer>
     </main>
-  )
+  );
 }
