@@ -16,14 +16,12 @@ async function getDinnerMenus() {
 }
 
 export default async function Home() {
-  // const menus: {
-  //   id: number;
-  //   type: number;
-  //   description: string;
-  //   price: string;
-  // }[] = await getDinnerMenus();
-
-  const menus: any[] = [];
+  const menus: {
+    id: number;
+    type: number;
+    description: string;
+    price: string;
+  }[] = await getDinnerMenus();
 
   const showEdit = true;
 
