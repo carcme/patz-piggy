@@ -7,8 +7,7 @@ function updateMenuItem() {
 }
 
 async function getDinnerMenus() {
-  // const res = await fetch(`${process.env.BASE_URL}/api/getDinnerMenus`);
-  const res = await fetch(`/api/getDinnerMenus`);
+  const res = await fetch(`${process.env.BASE_URL}/api/getDinnerMenus`);
 
   if (!res.ok) {
     console.log(res);
@@ -17,12 +16,14 @@ async function getDinnerMenus() {
 }
 
 export default async function Home() {
-  const menus: {
-    id: number;
-    type: number;
-    description: string;
-    price: string;
-  }[] = await getDinnerMenus();
+  // const menus: {
+  //   id: number;
+  //   type: number;
+  //   description: string;
+  //   price: string;
+  // }[] = await getDinnerMenus();
+
+  const menus: any[] = [];
 
   const showEdit = true;
 
