@@ -3,11 +3,6 @@ import Menu from "./components/menu";
 import Navbar from "./components/Navbar";
 import { BsTelephoneFill } from "react-icons/bs";
 import { FaMobileAlt, FaMapPin } from "react-icons/fa";
-import OpenTimes from "./components/openTime";
-
-function updateMenuItem() {
-  console.log("updateMenuItem");
-}
 
 async function getOpenTimes() {
   const res = await fetch(`${process.env.BASE_URL}/api/getOpenTimes`);
@@ -30,6 +25,7 @@ async function getDinnerMenus() {
 function getToday() {
   return new Date().getDay();
 }
+
 export default async function Home() {
   const menus: {
     id: number;
