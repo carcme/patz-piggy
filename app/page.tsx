@@ -19,6 +19,7 @@ async function getDinnerMenus() {
   if (!res.ok) {
     console.log(res);
   }
+
   return res.json();
 }
 
@@ -115,7 +116,7 @@ export default async function Home() {
       <div className="flex px-3 justify-center bg-slate-700 text-stone-400">
         <div className="grid grid-cols-2 mt-10 w-[800px]">
           <div className=" ">
-            <h2 className="text-2xl max-sm:text-lg uppercase ps-1 border-l-4 border-slate-600 mb-4">
+            <h2 className="text-2xl max-sm:text-lg uppercase ps-1 border-l-2 border-slate-600 mb-4">
               Contact
             </h2>
             <ul className="px-2 leading-8 max-sm:text-sm max-sm:leading-8">
@@ -180,7 +181,7 @@ export default async function Home() {
           {/* END <OpenTimes /> */}
           {/* <OpenTimes /> */}
           <div className="">
-            <h2 className="text-2xl max-sm:text-lg uppercase ps-1 border-l-4 border-slate-600 mb-4">
+            <h2 className="text-2xl max-sm:text-lg uppercase ps-1 border-l-2 border-slate-600 mb-4">
               Opening Hours
             </h2>
             <ul className="text-slate-500 px-2 leading-8 max-sm:text-sm">
