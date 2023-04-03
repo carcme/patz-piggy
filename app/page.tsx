@@ -4,10 +4,6 @@ import Navbar from "./components/Navbar";
 import { BsTelephoneFill } from "react-icons/bs";
 import { FaMobileAlt, FaMapPin } from "react-icons/fa";
 
-function updateMenuItem() {
-  console.log("updateMenuItem");
-}
-
 async function getOpenTimes() {
   const res = await fetch(`${process.env.BASE_URL}/api/getOpenTimes`);
 
@@ -37,12 +33,12 @@ export default async function Home() {
     price: string;
   }[] = await getDinnerMenus();
 
-  const openHours: {
-    id: number;
-    dayasint: number;
-    day: string;
-    times: string;
-  }[] = await getOpenTimes();
+  // const openHours: {
+  //   id: number;
+  //   dayasint: number;
+  //   day: string;
+  //   times: string;
+  // }[] = await getOpenTimes();
 
   const dayToday = getToday();
 
