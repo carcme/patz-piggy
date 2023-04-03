@@ -4,6 +4,10 @@ import Navbar from "./components/Navbar";
 import { BsTelephoneFill } from "react-icons/bs";
 import { FaMobileAlt, FaMapPin } from "react-icons/fa";
 
+function updateMenuItem() {
+  console.log("updateMenuItem");
+}
+
 async function getOpenTimes() {
   const res = await fetch(`${process.env.BASE_URL}/api/getOpenTimes`);
 
@@ -25,7 +29,6 @@ async function getDinnerMenus() {
 function getToday() {
   return new Date().getDay();
 }
-
 export default async function Home() {
   const menus: {
     id: number;
@@ -116,7 +119,7 @@ export default async function Home() {
       <div className="flex px-3 justify-center bg-slate-700 text-stone-400">
         <div className="grid grid-cols-2 mt-10 w-[800px]">
           <div className=" ">
-            <h2 className="text-2xl max-sm:text-lg uppercase ps-1 border-l-2 border-slate-600 mb-4">
+            <h2 className="text-2xl max-sm:text-lg uppercase ps-1 border-l-4 border-slate-600 mb-4">
               Contact
             </h2>
             <ul className="px-2 leading-8 max-sm:text-sm max-sm:leading-8">
@@ -154,7 +157,7 @@ export default async function Home() {
             </ul>
           </div>
           {/* <OpenTimes /> */}
-          <div className="my-2">
+          {/* <div className="my-2">
             <h2 className="text-2xl max-sm:text-lg uppercase ps-1 border-l-2 border-slate-600 mb-4">
               Opening Hours
             </h2>
@@ -177,8 +180,86 @@ export default async function Home() {
                 })}
               </ul>
             </div>
-          </div>
+          </div> */}
           {/* END <OpenTimes /> */}
+          {/* <OpenTimes /> */}
+          <div className="">
+            <h2 className="text-2xl max-sm:text-lg uppercase ps-1 border-l-4 border-slate-600 mb-4">
+              Opening Hours
+            </h2>
+            <ul className="text-slate-500 px-2 leading-8 max-sm:text-sm">
+              <li
+                className={
+                  dayToday === 0
+                    ? "text-stone-300 border-b border-slate-600"
+                    : "border-b border-slate-600"
+                }
+              >
+                {dayToday === 0 ? "Heute" : "Sonntag"}
+                <span className="float-right">10:00-20:00</span>
+              </li>
+              <li
+                className={
+                  dayToday === 1
+                    ? "text-stone-300 border-b border-slate-600"
+                    : "border-b border-slate-600"
+                }
+              >
+                {dayToday === 1 ? "Heute" : "Montag"}
+                <span className="float-right">Geschlossen</span>
+              </li>
+              <li
+                className={
+                  dayToday === 2
+                    ? "text-stone-300 border-b border-slate-600"
+                    : "border-b border-slate-600"
+                }
+              >
+                {dayToday === 2 ? "Heute" : "Dienstag"}
+                <span className="float-right">Geschlossen</span>
+              </li>
+              <li
+                className={
+                  dayToday === 3
+                    ? "text-stone-300 border-b border-slate-600"
+                    : "border-b border-slate-600"
+                }
+              >
+                {dayToday === 3 ? "Heute" : "Mittwoch"}
+                <span className="float-right">Geschlossen</span>
+              </li>
+              <li
+                className={
+                  dayToday === 4
+                    ? "text-stone-300 border-b border-slate-600"
+                    : "border-b border-slate-600"
+                }
+              >
+                {dayToday === 4 ? "Heute" : "Donnerstag"}
+                <span className="float-right">16:00-22:00</span>
+              </li>
+              <li
+                className={
+                  dayToday === 5
+                    ? "text-stone-300 border-b border-slate-600"
+                    : "border-b border-slate-600"
+                }
+              >
+                {dayToday === 5 ? "Heute" : "Freitag"}
+                <span className="float-right">16:00-23:30</span>
+              </li>
+              <li
+                className={
+                  dayToday === 6
+                    ? "text-stone-300 border-b border-slate-600 mb-2"
+                    : "border-b border-slate-600 mb-2"
+                }
+              >
+                {dayToday === 6 ? "Heute" : "Samstag"}
+                <span className="float-right">10:00-23:30</span>
+              </li>
+            </ul>
+          </div>{" "}
         </div>
       </div>
 
