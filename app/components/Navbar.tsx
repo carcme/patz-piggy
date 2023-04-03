@@ -9,9 +9,11 @@ function activateAdmin() {
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center bg-slate-700 flex-row justify-around py-12 max-sm:py-6 px-4">
+    <nav className="flex items-center bg-slate-700 flex-row justify-around py-12 gap-1 max-sm:py-6 px-4">
       <Link href={"/"}>
-        <h1 className="text-6xl font-bold max-sm:text-4xl">Lindenhof Patz</h1>
+        <h1 className="text-6xl font-bold max-sm:text-4xl border-l-2 border-slate-600">
+          Lindenhof Patz
+        </h1>
       </Link>
       <div className="flex ">
         <a href={process.env.DATABASE_DASHBOARD} target="_blank">
